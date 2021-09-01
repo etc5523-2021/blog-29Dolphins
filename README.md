@@ -2,7 +2,7 @@
 
 
 This is the blog of [Covid-19 spread trend in Iraq].
-The URL of this blog is [file:///C:/Users/BruceWayne/Desktop/blog-hlii0151/_site/index.html].
+The URL of this blog is [https://fervent-easley-300d68.netlify.app/].
 
 ## Blog Post 1
 
