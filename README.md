@@ -10,7 +10,7 @@ This assessment is due Fri Sep 3 2021 11.55PM AEST.
 
 My selected country is [Iraq].
 
-The relevant blog post for this assessment is in [file:///C:/Users/BruceWayne/Desktop/blog-hlii0151/_site/about.html]
+The relevant blog post for this assessment is in [https://fervent-easley-300d68.netlify.app/about.html]
 
 - [ ] Selected a country
 - [ ] Website with R markdown 
