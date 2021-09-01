@@ -1,0 +1,13 @@
+name: "hlii0151-website"
+navbar:
+  title: "hlii0151 Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Data exploration"
+      href: about.html
+output:
+  html_document:
+    toc: true
+    theme: flatly
+    css: style.css

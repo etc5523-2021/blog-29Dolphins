@@ -1,16 +1,16 @@
 # My Blog
 
 
-This is the blog of [FILL].
-The URL of this blog is [FILL].
+This is the blog of [Covid-19 spread trend in Iraq].
+The URL of this blog is [file:///C:/Users/BruceWayne/Desktop/blog-hlii0151/_site/index.html].
 
 ## Blog Post 1
 
 This assessment is due Fri Sep 3 2021 11.55PM AEST.
 
-My selected country is [FILL].
+My selected country is [Iraq].
 
-The relevant blog post for this assessment is in [FILL].html
+The relevant blog post for this assessment is in [file:///C:/Users/BruceWayne/Desktop/blog-hlii0151/_site/about.html]
 
 - [ ] Selected a country
 - [ ] Website with R markdown 
@@ -36,4 +36,3 @@ The relevant blog post for this assessment is in [FILL].html
 - [ ] Graph 1
 - [ ] Graph 2
 - [ ] Submitted the entire blog to Moodle
-

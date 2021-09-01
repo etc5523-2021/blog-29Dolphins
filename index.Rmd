@@ -1,0 +1,47 @@
+---
+title: "Coronavirus Pandemic (COVID-19)"
+
+---
+
+## Introduction
+
+![](COVID-19.jpg)
+
+Coronavirus is a contagious respiratory and vascular disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). It is the new virus of the coronavirus family, which first discovered in 2019, which has not been identified in humans before. Common symptoms of **COVID-19** include fever, cough, fatigue, breathing difficulties, and loss of smell and taste.Symptoms begin one to fourteen days after exposure to the virus.
+
+The virus has shown evidence of human-to-human transmission. Transmission rate (rate of infection) appeared to escalate in mid-January 2020. And it has later declared as Pandemic by WHO due to high rate spreads throughout the world. It becomes more important to understand about this spread. 
+
+## Data overview
+
++ This dataset contains 207 country profiles which allow us to explore the statistics on the coronavirus pandemic for every country in the world.
+
++ For a comprehensive assessment, this data track the impact of the pandemic across for 207 countries to study in depth the statistics on the coronavirus pandemic for every country in the world.
+
++ Every profile includes five main sections: cases, deaths, vaccinations, testing and government responses.
+
++ The data Published online at OurWorldInData.org. Retrieved from: <https://ourworldindata.org/coronavirus>
+
+## My data
+
+My research is an effort to analyze the ***Iraq*** data of confirmed, deaths, and recovered cases over time. The main focus is to analyze the spread trend of this virus. I filtered out the data of interest and displayed it in the form of an interactive table:
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(DT)
+```
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+coviddata <- read.csv("owid-covid-data.csv",header = TRUE)
+Iraq <- coviddata %>% filter(location=="Iraq")
+Iraq_new <- Iraq %>% select(date,total_cases,new_cases,
+                            total_deaths,new_deaths,tests_per_case,positive_rate)
+Iraq_new <- na.omit(Iraq_new)
+
+DT::datatable(Iraq_new,caption = htmltools::tags$caption('Table 1: COVID-19 data of Iraq.', style="color:black"),
+              options = list(pageLength = 5,
+                             initComplete = JS(
+                               "function(settings, json) {",
+                                "$(this.api().table().header()).css({'background-color': '#336699','color': '#fff'});","}")))
+```
+
+The more summary statistics of my data is here: [Data exploration](about.html)
