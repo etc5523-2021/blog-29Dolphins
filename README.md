@@ -26,7 +26,7 @@ The relevant blog post for this assessment is in [https://fervent-easley-300d68.
 
 This assessment is due Fri Sep 17 2021 11.55PM AEST.
 
-My selected country is [FILL].
+My selected country is [Russia].
 
 The relevant blog post for this assessment is in [FILL].html
 

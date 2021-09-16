@@ -1,10 +1,10 @@
-name: "hlii0151-website"
+name: "HaoLi(hlii0151)'s blog"
 navbar:
-  title: "hlii0151 Website"
+  title: "HaoLi(hlii0151)'s blog"
   left:
-    - text: "Home"
+    - text: " Covid-19epidemic in Irap"
       href: index.html
-    - text: "Data exploration"
+    - text: "Covid-19 epidemic in Russia"
       href: about.html
 output:
   html_document:

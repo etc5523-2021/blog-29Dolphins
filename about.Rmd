@@ -1,33 +1,52 @@
 ---
-title: "The spread trend of covid-19 in Iraq"
+title: "The spread trend of covid-19 in Russia"
 ---
 
-Based on monthly data, I showed total cases, new cases, total deaths, new deaths, tests per case and positive rate of covid-19 in Iraq. As shown in Table 2 below, we can find that the spread of covid-19 seems to have reached a peak in April 2021. After that, the epidemic situation showed a trend of improvement in May and June. Unfortunately, since July, the epidemic in Iraq has repeatedly occurred, with new cases even reaching new highs.
-
+## Introduction
+At the previous page we had acquired some information about the spread trend in Iraq. And the new research will focus on the situation of covid-19 epidemic in Russia. We use the 
+same dataset 
 
 ```{r echo=FALSE,message=FALSE,warning=FALSE}
 library(tidyverse)
-library(DT)
+library(plotly)
 ```
 
-```{r echo=FALSE,message=FALSE,warning=FALSE}
-coviddata <- read.csv("owid-covid-data.csv",header = TRUE)
-Iraq <- coviddata %>% filter(location=="Iraq")
-Iraq_new <- Iraq %>% select(date,total_cases,new_cases,
-                            total_deaths,new_deaths,tests_per_case,positive_rate)
-Iraq_new <- na.omit(Iraq_new)
+## The increasing Trend of covid-19 in Russia 
+```{r, echo=FALSE,message=FALSE,warning=FALSE}
+covid_data <- read.csv("owid-covid-data.csv",header = TRUE)
+Russia <- covid_data %>% filter(location=="Russia")
+Russia_new <- Russia %>% select(date,total_cases,new_cases,
+                            total_deaths,new_deaths,tests_per_case,
+                            new_cases_per_million,
+                            positive_rate,
+                            new_tests_smoothed)
+Russia_new <- na.omit(Russia_new)
 ```
 
-```{r echo=FALSE,message=FALSE,warning=FALSE}
-Iraq_new$month <- substr(Iraq_new$date,1,7)
-data <- Iraq_new %>%
-  select(-date) %>%
-  group_by(month) %>%
-  summarise_all(mean)%>% 
-  mutate_if(is.numeric, format, 3)
-DT::datatable(data,caption = htmltools::tags$caption('Table 2: Mean of COVID-19 data by each month of Iraq.', style="color:black"),
-              options = list(pageLength = 10,paging = FALSE,searching = FALSE,rownames= FALSE,
-                             initComplete = JS(
-                               "function(settings, json) {",
-                               "$(this.api().table().header()).css({'background-color': '#336699','color': '#fff'});","}")))
+
+
+
+```{r, echo=FALSE,message=FALSE,warning=FALSE}
+plot_ly(Russia_new, x = ~date, color = I("black")) %>%
+ add_lines(y = ~new_deaths) %>%
+ add_lines(y = ~new_cases, color = I("orange"))
 ```
+The line chart illustartes that the growth trend was slight at beginning , but the number of new cases per day began to rise sharply from September and peaked on December 24.
+After taking some protection measures, the number of new cases had to declined. Unfortunately, good time doesn't last long, with COVID-19 spread in global again, the new
+cases in Russia was increasing from May 2021. The new deaths per day has been stable even though the new cases is keep increasing.
+
+
+
+## The positive rate of different days
+
+```{r, echo=FALSE,message=FALSE,warning=FALSE}
+pic <- plot_ly(Russia_new, x = ~date, y = ~new_tests_smoothed)
+add_markers(pic, color  = ~positive_rate)
+```
+
+
+
+The scatterplot above has shown that how many people were tested every day and the 
+positive rate of those people. We can clearly see that the positive rate is keeping 
+from 0.02 to 0.04 for most of days. But in January 2021 the positive rate was raisen to 0.08.
+

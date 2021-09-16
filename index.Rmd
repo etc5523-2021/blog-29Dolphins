@@ -1,6 +1,5 @@
 ---
 title: "Coronavirus Pandemic (COVID-19)"
-
 ---
 
 ## Introduction
@@ -28,6 +27,7 @@ My research is an effort to analyze the ***Iraq*** data of confirmed, deaths, an
 ```{r echo=FALSE,message=FALSE,warning=FALSE}
 library(tidyverse)
 library(DT)
+library(plotly)
 ```
 
 ```{r echo=FALSE,message=FALSE,warning=FALSE}
@@ -44,4 +44,37 @@ DT::datatable(Iraq_new,caption = htmltools::tags$caption('Table 1: COVID-19 data
                                 "$(this.api().table().header()).css({'background-color': '#336699','color': '#fff'});","}")))
 ```
 
-The more summary statistics of my data is here: [Data exploration](about.html)
+---
+title: "The spread trend of covid-19 in Iraq"
+---
+
+Based on monthly data, I showed total cases, new cases, total deaths, new deaths, tests per case and positive rate of covid-19 in Iraq. As shown in Table 2 below, we can find that the spread of covid-19 seems to have reached a peak in April 2021. After that, the epidemic situation showed a trend of improvement in May and June. Unfortunately, since July, the epidemic in Iraq has repeatedly occurred, with new cases even reaching new highs.
+
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(DT)
+```
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+coviddata <- read.csv("owid-covid-data.csv",header = TRUE)
+Iraq <- coviddata %>% filter(location=="Iraq")
+Iraq_new <- Iraq %>% select(date,total_cases,new_cases,
+                            total_deaths,new_deaths,tests_per_case,positive_rate)
+Iraq_new <- na.omit(Iraq_new)
+```
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+Iraq_new$month <- substr(Iraq_new$date,1,7)
+data <- Iraq_new %>%
+  select(-date) %>%
+  group_by(month) %>%
+  summarise_all(mean)%>% 
+  mutate_if(is.numeric, format, 3)
+DT::datatable(data,caption = htmltools::tags$caption('Table 2: Mean of COVID-19 data by each month of Iraq.', style="color:black"),
+              options = list(pageLength = 10,paging = FALSE,searching = FALSE,rownames= FALSE,
+                             initComplete = JS(
+                               "function(settings, json) {",
+                               "$(this.api().table().header()).css({'background-color': '#336699','color': '#fff'});","}")))
+```
+The information of covid spread trend in Russia is here: [Covid in Russia](about.html)
