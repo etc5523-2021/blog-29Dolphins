@@ -2,7 +2,7 @@
 
 
 This is the blog of [Covid-19 spread trend in Iraq].
-The URL of this blog is [].
+The URL of this blog is [https://fervent-easley-300d68.netlify.app/].
 
 ## Blog Post 1
 
@@ -10,7 +10,7 @@ This assessment is due Fri Sep 3 2021 11.55PM AEST.
 
 My selected country is [Iraq].
 
-The relevant blog post for this assessment is in []
+The relevant blog post for this assessment is in [https://fervent-easley-300d68.netlify.app/about.html]
 
 - [ ] Selected a country
 - [ ] Website with R markdown 
